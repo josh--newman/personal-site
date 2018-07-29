@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
+import Disqus from 'disqus-react';
 
 import Bio from '../components/Bio'
 import { rhythm, scale } from '../utils/typography'
@@ -10,7 +11,13 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const { previous, next } = this.props.pathContext
+    const { previous, next, slug } = this.props.pathContext
+    const shortname = 'joshnewman';
+    const disqusConfig = {
+      url: '',
+      identifier: slug,
+      title: post.frontmatter.title,
+    }
 
     return (
       <div>
@@ -26,6 +33,16 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p>
+        <p
+          style={{
+            ...scale(-1 / 5),
+            display: 'block',
+            marginBottom: rhythm(1),
+            marginTop: rhythm(-1),
+          }}
+        >
+        </p>
+        <br/>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
@@ -33,7 +50,6 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
-
         <ul
           style={{
             display: 'flex',
@@ -60,6 +76,7 @@ class BlogPostTemplate extends React.Component {
             }
           </li>
         </ul>
+        <Disqus.DiscussionEmbed shortname={shortname} config={disqusConfig} />
       </div>
     )
   }

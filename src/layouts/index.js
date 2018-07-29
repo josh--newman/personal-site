@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+require('../../static/prism-base16-ateliersulphurpool.light.css');
 
 import { rhythm, scale } from '../utils/typography'
 

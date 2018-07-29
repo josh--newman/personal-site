@@ -3,7 +3,7 @@ module.exports = {
     title: 'Josh Newman',
     author: 'Josh Newman',
     description: 'Personal site of Josh Newman.',
-    siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/',
+    siteUrl: 'https://joshnewman.io',
   },
   pathPrefix: '/',
   plugins: [
